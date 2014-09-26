@@ -1,0 +1,17 @@
+{
+  "name": "couchdb-push-demo",
+  "version": "0.0.1",
+  "description": "A simple demo of push notifications from CouchDB messages",
+  "main": "index.js",
+  "author": "Daniel Vasarhelyi",
+  "private": true,
+  "license": "GPL",
+  "dependencies": {
+    "express": "4.2.0",
+    "socket.io": "1.1.0",
+    "cradle": "0.6.7"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

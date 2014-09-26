@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ative Push Message Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="notifications">
+    <ul class="messages"></ul>
+  </div>
+  <div class="registration">
+    <h3 class="title">Your ID?</h3>
+      <input class="idInput" type="text" maxlength="14" />
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var $window = $(window);
+    var $idInput = $('.idInput');
+    var $registration = $('.registration');
+    var $messages = $('.messages');
+
+    var id;
+
+    var socket = io();
+
+    // Prevents input from having injected markup
+    function cleanInput (input) {
+      return $('<div/>').text(input).text();
+    }
+
+    $window.keydown(function (event) {
+      if (event.which === 13) {
+        id = cleanInput($idInput.val().trim());
+        if (id) {
+          $registration.fadeOut();
+          socket.emit('register', id);
+        }
+      }
+    });
+
+    $idInput.focus();
+
+    socket.on('notification', function(payload) {
+      console.log(payload);
+      $messages.prepend('<li class="message">' + payload + '</li>');
+    });
+  </script>
+</body>
+</html>
