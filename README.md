@@ -12,6 +12,7 @@ How to use it
   * Clone this repo
 * From the root directory run:
   ```bash
+  
   npm install
   npm start
   ```
@@ -20,6 +21,7 @@ How to use it
  * Type in an id, e.g. _test_id_ and hit Enter
 * In a bash shell type
   ```bash
+  
   curl -X POST http://localhost:5984/messages -d'{"type": "message", "to": "test_id", "payload": "test notification"}' -H "Content-Type: application/json"
   ```
 * Enjoy!
